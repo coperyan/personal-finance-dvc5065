@@ -14,12 +14,48 @@
 
 using namespace std;
 
-//Struct for storing user's information
-struct userInfo
+//Class for storing all data
+class PersonalFinance
 {
-  string userFirstName;
-  string userLastName;
 };
+
+//Class for storing user's information
+class UserInfo
+{
+  public:
+    void SetName();
+    string GetFullName();
+    string GetFirstName();
+    string GetLastName();
+  private:
+    string userFirstName;
+    string userLastName;
+};
+
+//Mutator function to add name to UserInfo class
+void UserInfo::SetName()
+{
+  cout << "Please enter your first and last name: " << endl;
+  cin >> userFirstName >> userLastName;
+}
+
+//Accessor function to get name
+string UserInfo::GetFullName()
+{
+  return userFirstName << " " << userLastName;
+}
+
+//Accessor function to get first name
+string UserInfo::GetFirstName()
+{
+  return userFirstName;
+}
+
+//Accessor function to get last name
+string UserInfo::GetLastName()
+{
+  return userLastName;
+}
 
 //Struct for storing user's job information
 struct userJobInfo
