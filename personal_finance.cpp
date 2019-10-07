@@ -24,9 +24,9 @@ class UserInfo
 {
   public:
     void SetName();
-    string GetFullName();
-    string GetFirstName();
-    string GetLastName();
+    string getFullName();
+    string getFirstName();
+    string getLastName();
   private:
     string userFirstName;
     string userLastName;
@@ -40,30 +40,43 @@ void UserInfo::SetName()
 }
 
 //Accessor function to get name
-string UserInfo::GetFullName()
+string UserInfo::getFullName()
 {
   return userFirstName << " " << userLastName;
 }
 
 //Accessor function to get first name
-string UserInfo::GetFirstName()
+string UserInfo::getFirstName()
 {
   return userFirstName;
 }
 
 //Accessor function to get last name
-string UserInfo::GetLastName()
+string UserInfo::getLastName()
 {
   return userLastName;
 }
 
-//Struct for storing user's job information
-struct userJobInfo
+//Class for job info
+class userTaxInfo
 {
-  string jobTitle;
-  string jobZipCode;
-  double jobAnnualSalary;
-};
+  public:
+    void setJobTitle();
+    void setJobZip();
+    void setJobSalary();
+  private:
+    string jobTitle;
+    string jobZip;
+    double jobSalary;
+}
+
+void userTaxInfo::setJobTitle()
+{
+  cout << "Please enter your job title: " << endl;
+  cin >> jobTitle;
+}
+
+
 
 //Struct for storing user's tax information
 struct userTaxInfo
