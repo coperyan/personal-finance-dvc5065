@@ -42,7 +42,7 @@ void UserInfo::SetName()
 //Accessor function to get name
 string UserInfo::getFullName()
 {
-  return userFirstName << " " << userLastName;
+  return userFirstName + " " + userLastName;
 }
 
 //Accessor function to get first name
@@ -58,64 +58,143 @@ string UserInfo::getLastName()
 }
 
 //Class for job info
-class userJobInfo
+class userIncomeInfo
 {
   public:
     void setJobTitle();
     void setJobZip();
     void setJobSalary();
+    void setFilingStatus();
+    void setDependentCount();
+    void setTaxRate();
   private:
     string jobTitle;
     string jobZip;
     double jobSalary;
+    string filingStatus;
+    int dependentCount;
+    float taxRate;
+    float estimatedNetSalary;
 };
 
-void userJobInfo::setJobTitle()
+void userIncomeInfo::setJobTitle()
 {
   cout << "Please enter your job title: " << endl;
   cin >> jobTitle;
 }
 
-void userJobInfo::setJobZip()
+void userIncomeInfo::setJobZip()
 {
   cout << "Please enter your job's zip code: " << endl;
   cin >> jobZip;
 }
 
-void userJobInfo::setJobSalary()
+void userIncomeInfo::setJobSalary()
 {
-  cout << "Please enter your job's salary: " < endl;
+  cout << "Please enter your job's salary: " << endl;
   cin >> jobSalary;
 }
 
-//Class for user tax info
-class userTaxInfo
+void userIncomeInfo::setFilingStatus()
 {
-  public:
-    void setFilingStatus();
-    void setDependentCount();
-    void setTaxRate();
-  private:
-    string filingStatus;
-    int dependentCount;
-    float taxRate;
-};
-
-void userTaxInfo::setFilingStatus();
-{
-  cout << "Please enter your filing status (Single, Married, etc.): "
+  cout << "Please enter your filing status (Single or Married): " << endl;
   cin >> filingStatus;
 }
 
-void userTaxInfo::setDependentCount();
+void userIncomeInfo::setDependentCount()
 {
-  cout << "Please enter the count of dependents you claim (int): "
+  cout << "Please enter the count of dependents you claim (int): " << endl;
   cin >> dependentCount;
 }
 
-void userTaxInfo::setTaxRate();
+void userIncomeInfo::setTaxRate()
 {
-  switch()
+  if(filingStatus == "Single")
+  {
+    if(jobSalary <= 8544)
+    {
+      taxRate = 0.01;
+    }
+    else if (jobSalary <= 20255)
+    {
+      taxRate = 0.02;
+    }
+    else if (jobSalary <= 31969)
+    {
+      taxRate = 0.04;
+    }
+    else if (jobSalary <= 44377)
+    {
+      taxRate = 0.06;
+    }
+    else if (jobSalary <= 56085)
+    {
+      taxRate = 0.08;
+    }
+    else if (jobSalary <= 286492)
+    {
+      taxRate = 0.093;
+    }
+    else if (jobSalary <= 343788)
+    {
+      taxRate = 0.103;
+    }
+    else if (jobSalary <= 572980)
+    {
+      taxRate = 0.113;
+    }
+    else if (jobSalary >= 572981)
+    {
+      taxRate = 0.123;
+    }
+    else
+    {
+      taxRate = 0.00;
+    }
+  }
+  else if(filingStatus == "Married")
+  {
+    if(jobSalary <= 17088)
+    {
+      taxRate = 0.01;
+    }
+    else if (jobSalary <= 40510)
+    {
+      taxRate = 0.02;
+    }
+    else if (jobSalary <= 63938)
+    {
+      taxRate = 0.04;
+    }
+    else if (jobSalary <= 88754)
+    {
+      taxRate = 0.06;
+    }
+    else if (jobSalary <= 112170)
+    {
+      taxRate = 0.08;
+    }
+    else if (jobSalary <= 572984)
+    {
+      taxRate = 0.093;
+    }
+    else if (jobSalary <= 687576)
+    {
+      taxRate = 0.103;
+    }
+    else if (jobSalary <= 1145960)
+    {
+      taxRate = 0.113;
+    }
+    else if (jobSalary >= 1145961)
+    {
+      taxRate = 0.123;
+    }
+    else
+    {
+      taxRate = 0.00;
+    }
+  }
 }
 
 //Struct for expense information (will use in vector)
@@ -149,7 +228,7 @@ void userExpenseInfo::collectUserExpenses()
     cout << "Please enter the expense amount: " << endl;
     cin >> uei.expenseAmount;
 
-    cout >> "Please enter the expense frequency (Daily, Weekly, Monthly): " << endl;
+    cout << "Please enter the expense frequency (Daily, Weekly, Monthly): " << endl;
     cin >> uei.expenseFrequency;
 
     expInfo.push_back(uei);
@@ -168,21 +247,6 @@ void userExpenseInfo::collectUserExpenses()
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Struct for items to save for (will use in vector)
 struct itemSavingInfo
 {
@@ -198,8 +262,11 @@ struct itemSavingInfo
 int main()
 {
 
+  userExpenseInfo yaDude;
+  yaDude.collectUserExpenses();
 
-
+  cin.get();
+  cin.get();
 
   return 0;
 }
