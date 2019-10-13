@@ -58,7 +58,7 @@ string UserInfo::getLastName()
 }
 
 //Class for job info
-class userTaxInfo
+class userJobInfo
 {
   public:
     void setJobTitle();
@@ -68,31 +68,120 @@ class userTaxInfo
     string jobTitle;
     string jobZip;
     double jobSalary;
-}
+};
 
-void userTaxInfo::setJobTitle()
+void userJobInfo::setJobTitle()
 {
   cout << "Please enter your job title: " << endl;
   cin >> jobTitle;
 }
 
-
-
-//Struct for storing user's tax information
-struct userTaxInfo
+void userJobInfo::setJobZip()
 {
-  string filingStatus;
-  int dependentCount;
-  float taxRate;
+  cout << "Please enter your job's zip code: " << endl;
+  cin >> jobZip;
+}
+
+void userJobInfo::setJobSalary()
+{
+  cout << "Please enter your job's salary: " < endl;
+  cin >> jobSalary;
+}
+
+//Class for user tax info
+class userTaxInfo
+{
+  public:
+    void setFilingStatus();
+    void setDependentCount();
+    void setTaxRate();
+  private:
+    string filingStatus;
+    int dependentCount;
+    float taxRate;
 };
 
+void userTaxInfo::setFilingStatus();
+{
+  cout << "Please enter your filing status (Single, Married, etc.): "
+  cin >> filingStatus;
+}
+
+void userTaxInfo::setDependentCount();
+{
+  cout << "Please enter the count of dependents you claim (int): "
+  cin >> dependentCount;
+}
+
+void userTaxInfo::setTaxRate();
+{
+  switch()
+}
+
 //Struct for expense information (will use in vector)
-struct userExpenseInfo
+struct userExpInfo
 {
   string expenseName;
   double expenseAmount;
   string expenseFrequency;
 };
+
+class userExpenseInfo
+{
+  public:
+    void collectUserExpenses();
+  private:
+    vector<userExpInfo> expInfo;
+};
+
+void userExpenseInfo::collectUserExpenses()
+{
+
+  bool continueCollect = true;
+  while(continueCollect)
+  {
+    userExpInfo uei;
+    char usrReply;
+
+    cout << "Please enter the expense name: " << endl;
+    cin >> uei.expenseName;
+
+    cout << "Please enter the expense amount: " << endl;
+    cin >> uei.expenseAmount;
+
+    cout >> "Please enter the expense frequency (Daily, Weekly, Monthly): " << endl;
+    cin >> uei.expenseFrequency;
+
+    expInfo.push_back(uei);
+
+    cout << "Would you like to enter another expense? (Y/N)" << endl;
+    cin >> usrReply;
+
+    if(usrReply == 'Y')
+    {
+     continueCollect = true;
+    }
+    else
+    {
+      continueCollect = false;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Struct for items to save for (will use in vector)
 struct itemSavingInfo
