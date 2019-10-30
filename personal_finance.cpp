@@ -1,5 +1,5 @@
 /*
-    Ryan Cope & Cindy Ramirez
+    Ryan Cope
     DVC Fall 2019, Comsc 165, Section 5065
     Professor Heidi Gentry-Kolen
 */
